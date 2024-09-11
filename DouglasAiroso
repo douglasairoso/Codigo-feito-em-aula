@@ -1,0 +1,53 @@
+use shopnow;
+-- 1. Exiba todos os produtos cadastrados na tabela Produto
+show tables;
+-- 2. Liste o nome e o preço de todos os produtos com preço superior a R$500,00.
+select * from produto where preco  > 500;
+-- 3. Exiba os nomes e e-mails de todos os clientes cadastrados.
+select nome, email from cliente;
+-- 4. Liste todos os produtos cujo preço esteja entre R$100,00 e R$1.000,00.
+select nome_produto, preco from produto where preco BETWEEN 100.00 AND 1000.00;
+-- 5. Encontre todos os clientes cujo nome começa com a letra “M”
+select * from cliente where nome like 'M%';
+-- 6. Liste todos os pedidos feitos após o dia 1º de fevereiro de 2024.
+select * from pedido where data_pedido > '2024-02-01';
+-- 7. Liste os produtos em ordem decrescente de preço
+select nome_produto, preco from produto order by preco desc;
+-- 8. Exiba os 5 produtos mais caros cadastrados em ordem crescente.
+select nome_produto, preco from produto order by preco asc;
+-- 9. Exiba os 3 pedidos mais recentes feitos pelos clie
+select data_pedido from Pedido order by data_pedido desc limit 3;
+-- 10. Insira um novo cliente na tabela Cliente com os seguintes dados:
+-- • Nome: “Lucas Dias”
+-- • E-mail: “lucas.dias@gmail.com”
+-- • Telefone: “9888-0000”
+INSERT INTO Cliente (nome, email, telefone)
+values ('Lucas Dias', 'lucas.dias@gmail.com','9888-0000');
+-- 11. Atualize o preço do produto “Camiseta” para R$60,00
+UPDATE Produto set preco = 60 where nome_produto = 'Camiseta';
+-- 12. Exclua o pedido feito no dia 15 de janeiro de 2024 (Aleatório)
+set foreign_key_checks = 0;
+DELETE FROM Pedido where data_pedido = '2024-02-15';
+-- 13. Insira um novo pedido na tabela Pedido com os seguintes dados:
+-- • ID do Cliente: 3
+-- • Data do Pedido: 10 de março de 2024
+-- • Valor Total: R$200,00
+INSERT INTO Pedido (id_cliente, data_pedido, valor_total)
+values (3, '2024-03-10',200.00);
+-- 14. Altere o telefone do cliente “Maria Lima” (Aleatório) para “9999-9999”.
+UPDATE Cliente set telefone = '9999-9999' where nome = 'Maria Lima';
+-- 15. Encontre o produto mais caro na tabela Produto
+SELECT MAX(preco) AS maior_preco from Produto;
+-- 16. Calcule o valor total de todos os pedidos feitos na loja.
+SELECT SUM(preco) AS valor_total FROM Produto;
+-- 17. Conte quantos produtos custam mais de R$200,00.
+SELECT COUNT(*) AS maiores_que_200 FROM Produto where preco > 200;
+-- 18. Encontre o valor médio dos preços de produtos cadastrados na tabela Produto.
+
+-- 19. Liste os pedidos cujo valor total seja maior ou igual a R$500,00
+SELECT * FROM Pedido WHERE valor_total >= 500.00; 
+-- 20. Calcule o valor total de todos os pedidos feitos por clientes cujo nome começa com “J”.
+
+
+
+
